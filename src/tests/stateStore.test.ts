@@ -4,7 +4,6 @@ import type { State } from "../logic/nextState"
 import type { Article } from "../logic/article"
 
 const initial: State = {
-      mode: 'browse',
       activeFilter: 'all',
       selectedIds: new Set(),
 }

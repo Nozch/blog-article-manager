@@ -50,9 +50,6 @@
         <input type="radio" name="articile_filter" class="tab" aria-label="public" data-filter="public"></input>
         <input type="radio" name="articile_filter" class="tab" aria-label="deleted" data-filter="deleted"></input>
       </div>
-      <button class="btn btn-accent btn-ghost mb-2" data-action="toggle-publish-mode">
-      Publish Articles
-      </button>
     </div>
 
     <!-- 記事リスト -->
@@ -97,6 +94,19 @@
         </div>
       </li>
     </ul>
+    <template id="article-row-template">
+      <li class="list-row grid grid-cols-[7rem_1fr] items-center gap-x-4"
+        data-article-id=""
+        >
+        <div class="flex justify-start">
+          <div class="badge badge-soft w-20 justify-center"></div>
+        </div>
+        <div class="min-w-0">
+          <div class="truncate article-title"></div>
+          <div class="text-xs uppercase font-semibold opacity article-lead"></div>
+        </div>
+      </li>
+    </template>
     </div>
     <div id="publish-panel" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[min(48rem,calc(100%-2rem))]">
     <div class="card bg-base-100 shadow-xl border">
