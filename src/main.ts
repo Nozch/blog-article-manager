@@ -6,7 +6,6 @@ import { render } from './ui/render'
 
 
 const initial: State =  {
-  mode: 'browse',
   activeFilter: 'all',
   selectedIds: new Set(),
 }
@@ -16,8 +15,14 @@ export const articles = [
     title: 'HIKAKINが妻のことを"つまお"と呼んでいる件について',
     lead: '血が繋がっていれば"キン"をつけるという説は本当なのか'
   },
-  { id: 'p1', visibility: 'public' },
-  { id: 'x1', visibility: 'deleted' },
+  { id: 'p1', visibility: 'public',
+    title: 'MEGWIN TVの視聴者層に関する考察',
+    lead: '一体全体、誰が見ているのか'
+  },
+  { id: 'x1', visibility: 'deleted',
+    title: '"マスオでぇす！"のあいさつに隠された深い意味の考察', 
+    lead: 'この記事は世に出るべきではないかもしれない'
+  },
 ] as Article[]
 
 function createArticleRow(a: Article): HTMLElement {
@@ -57,20 +62,9 @@ app.addEventListener('change', (e) => {
   return
 
 })
-// 記事公開モードへの移行用リスナー
+// 記事のチェックボックス用リスナー
 app.addEventListener('click', (e) => {
   const target = e.target as HTMLElement
-  const toggleBtn = target.closest<HTMLElement>('[data-action="toggle-publish-mode"]')
-  if (toggleBtn) {
-    stateStore.apply({ type: 'TOGGLE_PUBLISH_MODE'}, articles)
-    return
-  }
-
-  const publishBtn = target.closest<HTMLElement>('[data-action="publish-selected"]')
-  if (publishBtn) {
-    console.log('publish selected', Array.from(stateStore.get().selectedIds))
-    return
-  }
 
   const checkbox = target.closest<HTMLInputElement>('[data-action="toggle-select"]')
   if (checkbox) {
