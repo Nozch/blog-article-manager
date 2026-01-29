@@ -2,24 +2,20 @@ import './style.css'
 import type { State, Action } from './logic/nextState'
 import type { Article } from "./logic/article"
 import { createStateStore } from './logic/stateStore'
-import { renderArticleList, renderArticleListFilter,} from './ui/articleListRenderer'
+import { buildArticleList } from './ui/articleListBuilder'
+import { syncFilterUI } from './ui/syncUI'
 
-
-const initial: State =  {
-  activeFilter: 'all',
-  selectedIds: new Set(),
-}
 
 export const articles = [
-  { id: 'd1', visibility: 'draft',
+  { id: 'd1', publishStatus: 'draft',
     title: 'draft draft',
     lead: 'Drift drift kyu kyu kyu'
   },
-  { id: 'p1', visibility: 'public',
+  { id: 'p1',  publishStatus: 'public',
     title: 'Public Public',
     lead: 'look around, there are public'
   },
-  { id: 'x1', visibility: 'deleted',
+  { id: 'x1', publishStatus: 'deleted',
     title: 'this one is already deleted,', 
     lead: 'and you should have leave here soon'
   },
@@ -27,12 +23,16 @@ export const articles = [
 
 
 
+const initial: State =  {
+  activeFilter: 'all',
+  selectedIds: new Set(),
+}
+
 const stateStore = createStateStore(initial) 
-renderArticleList(stateStore.get(), articles)
+buildArticleList(articles)
 
 stateStore.onChange((state) => { 
-  renderArticleListFilter
-  renderArticleList(state, articles)
+  syncFilterUI(state, articles)
 })
 
 

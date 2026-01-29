@@ -4,9 +4,9 @@ import type { Article } from "../logic/article"
 
 
 const articles = [
-  { id: 'd1', visibility: 'draft' },
-  { id: 'p1', visibility: 'public' },
-  { id: 'x1', visibility: 'deleted' },
+  { id: 'd1', publishStatus: 'draft' },
+  { id: 'p1', publishStatus: 'public' },
+  { id: 'x1', publishStatus: 'deleted' },
 ] as Article[]
 
 const draftId = 'd1'
