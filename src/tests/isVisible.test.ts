@@ -11,9 +11,9 @@ import { makeState } from './helpers/stateFactory';
 
 
 describe('isVisible', () => {
-  const draft = makeArticle({ id: '1', visibility: 'draft' });
-  const pub = makeArticle({ id: 'p1', visibility: 'public' });
-  const del = makeArticle({ id: 'x1', visibility: 'deleted' })
+  const draft = makeArticle({ id: '1', publishStatus: 'draft' });
+  const pub = makeArticle({ id: 'p1', publishStatus: 'public' });
+  const del = makeArticle({ id: 'x1', publishStatus: 'deleted' })
 
   it('filter=all => 全てtrue', () => {
     const state = makeState({ activeFilter: 'all' });

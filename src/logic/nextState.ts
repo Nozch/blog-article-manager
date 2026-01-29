@@ -22,8 +22,6 @@ export function nextState(state: State, action: Action, articles: Article[]): St
       const article = findArticleById(articles, action.id)
       if (!article) return state
 
-      if (!(article.visibility === 'draft')) return state
-
       const nextSelected = new Set(state.selectedIds)
       if (nextSelected.has(action.id)) nextSelected.delete(action.id)
       else nextSelected.add(action.id)

@@ -1,15 +1,14 @@
 export type Article = {
   id: string
-  visibility: Visibility
+  publishStatus: 'draft' | 'public' | 'deleted'
   title: string
   lead?: string
 }
 
-export type Visibility = 'draft' | 'public' | 'deleted';
-
-export type Filter = 'all' | Visibility;
+export type Filter = 'all' | Article['publishStatus'];
 
 export type State = {
-  activeFilter: Filter;
+  activeFilter: Filter,
+  selectedIds: ReadonlySet<String>
 };
 
