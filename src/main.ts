@@ -2,7 +2,7 @@ import './style.css'
 import type { State, Action } from './logic/nextState'
 import type { Article } from "./logic/article"
 import { createStateStore } from './logic/stateStore'
-import { render } from './ui/render'
+import { renderArticleList, renderArticleListFilter,} from './ui/articleListRenderer'
 
 
 const initial: State =  {
@@ -12,40 +12,28 @@ const initial: State =  {
 
 export const articles = [
   { id: 'd1', visibility: 'draft',
-    title: 'HIKAKINが妻のことを"つまお"と呼んでいる件について',
-    lead: '血が繋がっていれば"キン"をつけるという説は本当なのか'
+    title: 'draft draft',
+    lead: 'Drift drift kyu kyu kyu'
   },
   { id: 'p1', visibility: 'public',
-    title: 'MEGWIN TVの視聴者層に関する考察',
-    lead: '一体全体、誰が見ているのか'
+    title: 'Public Public',
+    lead: 'look around, there are public'
   },
   { id: 'x1', visibility: 'deleted',
-    title: '"マスオでぇす！"のあいさつに隠された深い意味の考察', 
-    lead: 'この記事は世に出るべきではないかもしれない'
+    title: 'this one is already deleted,', 
+    lead: 'and you should have leave here soon'
   },
 ] as Article[]
 
-function createArticleRow(a: Article): HTMLElement {
-  const tpl = document.getElementById('article-row-template') as HTMLTemplateElement
-  const node = tpl.content.firstElementChild!.cloneNode(true) as HTMLElement
-  node.dataset.articleId = a.id
-  const badge = node.querySelector('.badge')!
-  badge.textContent = a.visibility
-  badge.classList.add(
-    a.visibility === 'public' ? 'badge-accent' : 'badge-neutral'
-  )
-  node.querySelector('.article-title')!.textContent = a.title
-  const leadEl = node.querySelector('.article-lead')!
-  if (a.lead) {
-    leadEl.textContent = a.lead
-  } else {
-    leadEl.remove()
-  }
-  return node
-}
+
 
 const stateStore = createStateStore(initial) 
-stateStore.onChange(render)
+renderArticleList(stateStore.get(), articles)
+
+stateStore.onChange((state) => { 
+  renderArticleListFilter
+  renderArticleList(state, articles)
+})
 
 
 const app = document.querySelector<HTMLDivElement>('#app')!
