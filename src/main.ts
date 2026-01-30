@@ -1,28 +1,11 @@
 import './style.css'
 import type { State, Action } from './logic/nextState'
-import type { Article } from "./logic/article"
 import { createStateStore } from './logic/stateStore'
 import { buildArticleList } from './ui/articleListBuilder'
 import { syncFilterUI } from './ui/syncUI'
+import { loadArticles } from './data/loadArticles'
 
-
-export const articles = [
-  { id: 'd1', publishStatus: 'draft',
-    title: 'draft draft',
-    lead: 'Drift drift kyu kyu kyu'
-  },
-  { id: 'p1',  publishStatus: 'public',
-    title: 'Public Public',
-    lead: 'look around, there are public'
-  },
-  { id: 'x1', publishStatus: 'deleted',
-    title: 'this one is already deleted,', 
-    lead: 'and you should have leave here soon'
-  },
-] as Article[]
-
-
-
+const articles = loadArticles()
 const initial: State =  {
   activeFilter: 'all',
   selectedIds: new Set(),

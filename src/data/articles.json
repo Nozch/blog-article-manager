@@ -1,0 +1,20 @@
+[
+  {
+    "id": "a1",
+    "publishStatus": "draft",
+    "title": "下書きの記事",
+    "lead": "drift drift kyukyu-kyu"
+  },
+  {
+    "id": "a2",
+    "publishStatus": "public",
+    "title": "公開中の記事",
+    "lead": "public credit union is calling you!"
+  },
+  {
+    "id": "a3",
+    "publishStatus": "deleted",
+    "title": "削除された記事",
+    "lead": "you should've leave here."
+  }
+]
