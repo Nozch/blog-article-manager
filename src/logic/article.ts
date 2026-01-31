@@ -1,9 +1,4 @@
-export type Article = {
-  id: string
-  publishStatus: 'draft' | 'public' | 'deleted'
-  title: string
-  lead?: string
-}
+import type { Article } from "../data/loadArticles";
 
 export type Filter = 'all' | Article['publishStatus'];
 
