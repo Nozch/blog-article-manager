@@ -1,12 +1,4 @@
-import type { Article } from "./article"
-
-export type Visibility = 'draft' | 'public' | 'deleted'
-export type Filter = 'all' | Visibility
-export type Mode = 'browse' | 'publish'
-export type State = {
-  activeFilter: Filter
-  selectedIds: Set<String>
-}
+import type { Article, Filter, State } from "./article";
 
 export type Action =
   | { type: 'TOGGLE_SELECT'; id: string }

@@ -1,5 +1,4 @@
-import type { State } from '../logic/article'
-import type { Article } from '../data/loadArticles'
+import type { Article, State } from '../logic/article'
 import { isVisible } from '../logic/isVisible'
 
 export function updateFilterTabs(state: State) {

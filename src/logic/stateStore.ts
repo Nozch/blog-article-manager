@@ -1,4 +1,5 @@
-import type { Action, State } from './nextState'
+import type { State } from './article'
+import type { Action } from './nextState'
 import type { Article } from "./article"
 import { nextState } from './nextState'
 
