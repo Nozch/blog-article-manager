@@ -1,5 +1,7 @@
-import raw from './articles.json'
+import raw from '../data/articles.json'
 import { z } from 'zod'
+import type { Article } from '../logic/article'
+
 export const PublishStatusSchema = z.enum(['draft', 'public', 'deleted'])
 
 export const ArticleSchema = z.object({
@@ -11,9 +13,8 @@ export const ArticleSchema = z.object({
 
 export const ArticlesSchema = z.array(ArticleSchema)
 
-export type Article = z.infer<typeof ArticleSchema>
 
-export function loadArticles(): Article[] {
+export async function loadArticles(): Promise<Article[]> {
     const parsed = ArticlesSchema.parse(raw)
     return parsed as Article[]
 }

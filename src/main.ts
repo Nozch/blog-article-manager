@@ -1,11 +1,12 @@
 import './style.css'
-import type { State, Action } from './logic/nextState'
+import type { State } from './logic/article'
+import type { Action } from './logic/nextState'
 import { createStateStore } from './logic/stateStore'
 import { buildArticleList } from './ui/articleListBuilder'
 import { syncFilterUI } from './ui/syncUI'
 import { loadArticles } from './data/loadArticles'
 
-const articles = loadArticles()
+const articles = await loadArticles()
 const initial: State =  {
   activeFilter: 'all',
   selectedIds: new Set(),
@@ -46,5 +47,3 @@ app.addEventListener('click', (e) => {
     return 
   }
 })
-
-
