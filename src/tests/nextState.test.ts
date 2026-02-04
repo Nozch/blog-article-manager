@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { nextState, type State } from '../logic/nextState'
-import type { Article } from "../logic/article"
+import { nextState } from '../logic/nextState'
+import type { Article, State } from "../logic/article"
 
 
 const articles = [
